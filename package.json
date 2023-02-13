@@ -1,0 +1,19 @@
+{
+  "name": "atividade_22_ebac",
+  "version": "1.0.0",
+  "description": "Atividade Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lewiz-QA/atividade_22_ebac.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lewiz-QA/atividade_22_ebac/issues"
+  },
+  "homepage": "https://github.com/Lewiz-QA/atividade_22_ebac#readme"
+}
