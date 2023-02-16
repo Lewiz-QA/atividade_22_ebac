@@ -1,10 +1,12 @@
 {
   "name": "atividade_22_ebac",
   "version": "1.0.0",
-  "description": "Atividade Cypress",
+  "description": "Atividade Cypress: Page Objects e App Actions",
   "main": "index.js",
   "scripts": {
-    "test": "npm t"
+    "test": "npx cypress run",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/Lewiz-QA/atividade_22_ebac/issues"
   },
-  "homepage": "https://github.com/Lewiz-QA/atividade_22_ebac#readme"
+  "homepage": "https://github.com/Lewiz-QA/atividade_22_ebac#readme",
+  "devDependencies": {
+    "cypress": "^9.7.0"
+  },
+  "dependencies": {
+    "faker": "^5.5.3"
+  }
 }
