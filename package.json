@@ -24,7 +24,7 @@
     "cypress": "^9.7.0"
   },
   "dependencies": {
-    "faker": "^5.5.3",
-    "allure-commandline": "^2.13.8"
+    "@shelex/cypress-allure-plugin": "^2.38.3",
+    "allure-commandline": "^2.22.0"
   }
 }

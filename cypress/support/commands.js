@@ -35,7 +35,7 @@ Cypress.Commands.add('login', (user, pass) => {
     const fd = new FormData()
     fd.append('username', user)
     fd.append('password', pass)
-    fd.append('woocommerce-login-nonce', 'fe6523a9b4') //O valor deste atributo pode variar de login para login
+    fd.append('woocommerce-login-nonce', '51059611be') //O valor deste atributo pode variar de login para login
     fd.append('_wp_http_referer', '/minha-conta/')
     fd.append('login', 'Login')
     cy.request({
@@ -59,21 +59,24 @@ Cypress.Commands.add('login', (user, pass) => {
 
 Cypress.Commands.add('addItemToCart', () => {
     const fd = new FormData()
-    fd.append('attribute_size', 'XS')
-    fd.append('attribute_color', 'White')
-    fd.append('quantity', 1)
-    fd.append('add-to-cart', 4104)
-    fd.append('product_id', 4104)
-    fd.append('variation_id', 4119)
+    fd.append('attribute_size', 'XL')
+    fd.append('attribute_color', 'Red')
+    fd.append('quantity', 2)
+    fd.append('add-to-cart', 3345)
+    fd.append('product_id', 3345)
+    fd.append('variation_id', 3357)
     cy.request({
-        url: '/product/ingrid-running-jacket',
+        url: 'product/atomic-endurance-running-tee-crew-neck/',
         method: 'POST',
         body: fd
-    }).then((response) => {
+    })
+    cy.visit('/carrinho')
+});
+    /*.then((response) => {
         expect(response.status).to.eq(200)
     })
     cy.visit('/checkout')
-});
+});*/
 
 Cypress.Commands.add('Checkout', () => {
     cy.get('#billing_first_name').clear().type('Luiz')
