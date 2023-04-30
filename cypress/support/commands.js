@@ -35,7 +35,7 @@ Cypress.Commands.add('login', (user, pass) => {
     const fd = new FormData()
     fd.append('username', user)
     fd.append('password', pass)
-    fd.append('woocommerce-login-nonce', 'fe6523a9b4') //O valor deste atributo pode variar de login para login
+    fd.append('woocommerce-login-nonce', '5845cee5d3') //O valor deste atributo pode variar de login para login
     fd.append('_wp_http_referer', '/minha-conta/')
     fd.append('login', 'Login')
     cy.request({
@@ -57,14 +57,14 @@ Cypress.Commands.add('login', (user, pass) => {
         })
 })
 
-Cypress.Commands.add('addItemToCart', () => {
+Cypress.Commands.add('addItemToCart', (tamanho, cor, qtde, variation_id) => {
     const fd = new FormData()
-    fd.append('attribute_size', 'XS')
-    fd.append('attribute_color', 'White')
-    fd.append('quantity', 1)
+    fd.append('attribute_size', tamanho)
+    fd.append('attribute_color', cor)
+    fd.append('quantity', qtde)
     fd.append('add-to-cart', 4104)
     fd.append('product_id', 4104)
-    fd.append('variation_id', 4119)
+    fd.append('variation_id', variation_id)
     cy.request({
         url: '/product/ingrid-running-jacket',
         method: 'POST',
@@ -75,19 +75,51 @@ Cypress.Commands.add('addItemToCart', () => {
     cy.visit('/checkout')
 });
 
-Cypress.Commands.add('Checkout', () => {
-    cy.get('#billing_first_name').clear().type('Luiz')
-    cy.get('#billing_last_name').clear().type('Guilherme')
-    cy.get('#billing_company').clear().type('Company Test')
-    cy.get('#select2-billing_country-container').click().type('Brasil').get('[aria-selected="true"]').click()
-    cy.get('#billing_address_1').clear().type('Rua teste')
-    cy.get('#billing_address_2').clear().type('Apartamento Número 100')
-    cy.get('#billing_city').clear().type('Curitiba')
-    cy.get('#select2-billing_state-container').click().type('Paraná' + '{enter}')
-    cy.get('#billing_postcode').clear().type('81010-100')
-    cy.get('#billing_phone').clear().type('4234222020')
-    cy.get('#billing_email').clear().type('teste@teste.com')
-    cy.get('#order_comments').clear().type('Informação adicional teste')
+Cypress.Commands.add('Checkout', (nome, sobrenome, empresa, pais, endereco, numero, cidade, estado, cep, fone, email, observacoes) => {
+    cy.get('#billing_first_name').clear().type(nome)
+    cy.get('#billing_last_name').clear().type(sobrenome)
+    cy.get('#billing_company').clear().type(empresa)
+    cy.get('#select2-billing_country-container').click().type(pais).get('[aria-selected="true"]').click()
+    cy.get('#billing_address_1').clear().type(endereco)
+    cy.get('#billing_address_2').clear().type(numero)
+    cy.get('#billing_city').clear().type(cidade)
+    cy.get('#select2-billing_state-container').click().type(estado + '{enter}')
+    cy.get('#billing_postcode').clear().type(cep)
+    cy.get('#billing_phone').clear().type(fone)
+    cy.get('#billing_email').clear().type(email)
+    cy.get('#order_comments').clear().type(observacoes)
     cy.get('#terms').click({ force: true })
     cy.get('#place_order').click()
 });
+
+/*
+Cypress.Commands.add('Checkout', () => {
+    const fd = new FormData()
+    fd.append('wc-ajax', 'checkout')
+    fd.append('billing_first_name', 'Luiz')
+    fd.append('billing_last_name', 'Guilherme')
+    fd.append('billing_company:', 'Company Test')
+    fd.append('billing_country', 'BR')
+    fd.append('billing_address_1', 'Rua teste')
+    fd.append('billing_address_2', 'Apartamento Número 100')
+    fd.append('billing_city', 'Curitiba')
+    fd.append('billing_state', 'PR')
+    fd.append('billing_postcode', 81010100)
+    fd.append('billing_phone', 4234222020)
+    fd.append('billing_email', 'teste@teste.com')
+    fd.append('account_password', null)
+    fd.append('order_comments', 'Informação adicional teste.')
+    fd.append('payment_method', 'bacs')
+    fd.append('terms', 'on')
+    fd.append('terms-field', 1)
+    fd.append('woocommerce-process-checkout-nonce:', '93fb188647')
+    fd.append('_wp_http_referer', '/?wc-ajax=update_order_review')
+    cy.request({
+        url: '/?wc-ajax=checkout',
+        method: 'POST',
+        body: fd
+    }).then((resp) => {
+        expect(resp.status).to.eq(200)
+    })
+});
+*/

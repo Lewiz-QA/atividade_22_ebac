@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npx cypress run",
     "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run"
+    "cy:run": "npx cypress run",
+    "test:allure": "npx cypress run --env allure=true",
+    "allure:open": "npx allure serve"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,8 @@
     "cypress": "^9.7.0"
   },
   "dependencies": {
-    "faker": "^5.5.3"
+    "faker": "^5.5.3",
+    "@shelex/cypress-allure-plugin": "^2.38.3",
+    "allure-commandline": "^2.22.0"
   }
 }
