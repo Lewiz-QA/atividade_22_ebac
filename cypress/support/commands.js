@@ -35,7 +35,7 @@ Cypress.Commands.add('login', (user, pass) => {
     const fd = new FormData()
     fd.append('username', user)
     fd.append('password', pass)
-    fd.append('woocommerce-login-nonce', '5845cee5d3') //O valor deste atributo pode variar de login para login
+    fd.append('woocommerce-login-nonce', '505897c60d') //O valor deste atributo pode variar de login para login
     fd.append('_wp_http_referer', '/minha-conta/')
     fd.append('login', 'Login')
     cy.request({
