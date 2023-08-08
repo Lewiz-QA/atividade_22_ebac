@@ -26,7 +26,6 @@ jobs:
         with:
           install-command: npm install
           browser: chrome
-          test:allure: npx cypress run --env allure=true
       - name: Publish Report
         uses: peaceiris/actions-gh-pages@v3
         with:
