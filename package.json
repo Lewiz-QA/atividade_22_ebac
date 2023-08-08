@@ -24,6 +24,12 @@
     "cypress": "^9.7.0"
   },
   "dependencies": {
+    "cypress-multi-reporters": "^1.5.0",
+    "joi": "^17.4.2",
+    "mocha": "^9.1.0",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0",
     "faker": "^5.5.3",
     "@shelex/cypress-allure-plugin": "^2.38.3",
     "allure-commandline": "^2.22.0"
