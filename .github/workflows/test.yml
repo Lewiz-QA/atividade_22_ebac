@@ -27,19 +27,8 @@ jobs:
           install-command: npm install
           browser: chrome
           test:allure: npx cypress run --env allure=true
-      - name: Publish report
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
+      - name: Publish Report
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          allure_results: ./allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-      - name: Deploy report to Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-            PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            PUBLISH_BRANCH: gh-pages
-            PUBLISH_DIR: ./allure-results
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./mochawesome-report
