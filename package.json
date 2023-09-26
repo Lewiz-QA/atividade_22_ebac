@@ -6,6 +6,7 @@
   "scripts": {
     "test": "npx cypress run",
     "cy:open": "npx cypress open",
+    "cy:report": "cypress run --record --key 4630e457-7ffd-4792-901f-d182ffbe3de6",
     "cy:run": "npx cypress run",
     "test:allure": "npx cypress run --env allure=true",
     "allure:open": "npx allure serve"

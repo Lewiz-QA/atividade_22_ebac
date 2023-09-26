@@ -1,10 +1,11 @@
 {
-    "baseUrl": "http://lojaebac.ebaconline.art.br/",
-    "reporterOptions": {
-        "reportDir": "mochawesome-report",
-        "overwrite": false,
-        "reportFilename": "index.html",
-        "html": true,
-        "json": false
-    }
+  "baseUrl": "http://lojaebac.ebaconline.art.br/",
+  "reporterOptions": {
+    "reportDir": "mochawesome-report",
+    "overwrite": false,
+    "reportFilename": "index.html",
+    "html": true,
+    "json": false
+  },
+  "projectId": "jxx1vo"
 }
